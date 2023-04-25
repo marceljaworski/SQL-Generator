@@ -7,6 +7,13 @@ function MessagesDisplay() {
         <MessageDisplay/>
         <MessageDisplay/>
         <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
+        <MessageDisplay/>
     </div>
   )
 }
