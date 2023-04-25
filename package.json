@@ -1,10 +1,11 @@
 {
-  "name": "sql-generatoropenai",
+  "name": "sql-openai-generator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start:backend": "ts-node --esm index.ts",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
