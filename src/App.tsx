@@ -34,13 +34,14 @@ function App() {
     }
   }
 
-  const filteredUserMessages = chat.filter(message => message.role === "user" )
+  const filteredUserMessages = chat.filter(message => message.role === "user" );
+  const latestCode = chat.filter(message => message.role === "assistant").pop();
 
   return (
     <div className="app">
       <MessagesDisplay userMessages={filteredUserMessages}/>
       <input type="text" value={value} onChange={e => setValue(e.target.value)} />
-      <CodeDisplay/>
+      <CodeDisplay text={latestCode?.content || ""}/>
       <div className="button-container">
         <button id="get-query" onClick={getQuery}>Get Query!</button>
         <button id="clear-chat">Clear Chat</button>

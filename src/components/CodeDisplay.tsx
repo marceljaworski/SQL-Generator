@@ -1,6 +1,8 @@
+interface CodeDisplayProps {
+  text: string
+}
 
-
-function CodeDisplay() {
+function CodeDisplay( { text } : CodeDisplayProps) {
   return (
     <div className="code-display">
       <div className="buttons">
@@ -9,7 +11,7 @@ function CodeDisplay() {
         <div className="button last"></div>
       </div>
       <div className="code-output">
-        <p></p>
+        <p>{text}</p>
       </div>
     </div>
   )
