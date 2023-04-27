@@ -1,19 +1,24 @@
 import express, { Application, Request, Response} from "express";
 import cors from "cors";
 import { Configuration, OpenAIApi} from "openai";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 dotenv.config();
 const PORT: number = /*process.env.PORT || */8000;
+
 const app: Application = express();
-app.use(express.json());
 app.use(cors());
 app.use(express.json());
+// declare var process : {
+//     env: {
+//       API_KEY: string
+//     }
+// }
 const API_KEY = process.env.API_KEY;
 
+console.log(API_KEY)
 const configuration = new Configuration({
     apiKey: API_KEY
 })
-
 const openai = new OpenAIApi(configuration);
 app.post("/completions", async ( req: Request, res: Response) => {
     try {
