@@ -1,19 +1,21 @@
 import MessageDisplay from "./MessageDisplay";
 
-function MessagesDisplay() {
+interface UserMessage {
+  role: string,
+  content: string
+}
+
+interface MessagesDisplayProps {
+  userMessages: UserMessage[]
+}
+
+function MessagesDisplay({ userMessages } : MessagesDisplayProps) {
   return (
     <div className="messages-display">
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
-        <MessageDisplay/>
+      {userMessages.map(( userMessage, _index) => 
+        <MessageDisplay key={_index} message={userMessage}/>
+      )}
+     
     </div>
   )
 }

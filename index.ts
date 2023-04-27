@@ -31,5 +31,5 @@ app.post("/completions", async ( req: Request, res: Response) => {
         console.error(error)
         res.status(500).send("Server error")
     }
-})
+});
 app.listen(PORT, () => console.log(`Your server is running on PORT ${PORT}`) );

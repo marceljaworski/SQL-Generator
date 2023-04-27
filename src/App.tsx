@@ -24,15 +24,21 @@ function App() {
       const response = await fetch("http://localhost:8000/completions", options);
       const data = await response.json();
       console.log(data);
-      setChat(oldChat => [...oldChat, data])
+      const userMessage = {
+        role: "user",
+        content: value
+      }
+      setChat(oldChat => [...oldChat, data, userMessage])
     } catch (error) {
       console.error(error);
     }
   }
 
+  const filteredUserMessages = chat.filter(message => message.role === "user" )
+
   return (
     <div className="app">
-      <MessagesDisplay/>
+      <MessagesDisplay userMessages={filteredUserMessages}/>
       <input type="text" value={value} onChange={e => setValue(e.target.value)} />
       <CodeDisplay/>
       <div className="button-container">

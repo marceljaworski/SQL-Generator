@@ -1,10 +1,18 @@
+interface UserMessage {
+  role: string,
+  content: string
+}
 
-function MassageDisplay() {
+interface MessageDisplayProps {
+  message: UserMessage
+}
+
+function MassageDisplay({ message } : MessageDisplayProps) {
   return (
     <div className="message-display">
       <p id="icon">X</p>
-      <p>user</p>
-      <p>message</p>
+      <p>{message.role}</p>
+      <p>{message.content}</p>
     </div>
   )
 }
