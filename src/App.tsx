@@ -1,8 +1,15 @@
+import { useState} from "react";
 import MessagesDisplay from "./components/MessagesDisplay";
 import CodeDisplay from "./components/CodeDisplay";
 
-
+interface ChatData {
+  role: string,
+  content: string,
+};
 function App() {
+  const [ value, setValue] = useState<string>("");
+  const [ chat, setChat] = useState<ChatData[]>([]);
+
   const getQuery = async() => {
     try {
       const options = {
@@ -11,12 +18,13 @@ function App() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: "create a table"
+          message: value
         })
       }
-      const response = await fetch("http://localhost:800/completions", options);
+      const response = await fetch("http://localhost:8000/completions", options);
       const data = await response.json();
       console.log(data);
+      setChat(oldChat => [...oldChat, data])
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +33,7 @@ function App() {
   return (
     <div className="app">
       <MessagesDisplay/>
-      <input type="text" />
+      <input type="text" value={value} onChange={e => setValue(e.target.value)} />
       <CodeDisplay/>
       <div className="button-container">
         <button id="get-query" onClick={getQuery}>Get Query!</button>
